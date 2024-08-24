@@ -8,11 +8,13 @@ authors = ["Gaylord Carrillo <gaylord.carrillo.caballero@gmail.com>"]
 python = ">=3.10,<=3.13"
 crewai = { extras = ["tools"], version = "^0.35.8" }
 selenium = "^4.21.0"
+fastapi = "^0.112.2"
+uvicorn = "^0.30.6"
 
 [tool.poetry.scripts]
+fasapi = "uvicorn recruitment.main:app --reload"
 recruitment = "recruitment.main:run"
 train = "recruitment.main:train"
 
 [build-system]
 requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
