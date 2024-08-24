@@ -1,4 +1,4 @@
-# agents_project
+# AGENTS PROJECT
 
 
 # SETUP BACKEND
