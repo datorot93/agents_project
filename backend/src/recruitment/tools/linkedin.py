@@ -17,6 +17,8 @@ class LinkedInTool(BaseTool):
         return people
 
     def _format_publications_to_text(self, people):
+        candidates = []
+        
         result = ["\n".join([
             "Person Profile",
             "-------------",

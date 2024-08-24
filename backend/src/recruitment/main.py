@@ -8,6 +8,7 @@ from pydantic import BaseModel
 # FastAPI
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 
 app = FastAPI()
@@ -22,7 +23,7 @@ app.add_middleware(
 
 # Modelo Pydantic para recibir los inputs
 class JobRequirementsInput(BaseModel):
-    job_requirements: dict
+    job_requirements: str
 
 
 @app.post("/run/")
@@ -60,7 +61,7 @@ def run():
     - Bachelor's degree in Computer Science or a related field.
         """
     }
-    RecruitmentCrew().crew().kickoff(inputs=inputs)
+    # RecruitmentCrew().crew().kickoff(inputs=inputs)
 
 def train():
     """
@@ -95,3 +96,7 @@ def train():
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
+    
+
+if __name__ == "__main__":
+  uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8888)
