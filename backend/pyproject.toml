@@ -10,9 +10,10 @@ crewai = { extras = ["tools"], version = "^0.35.8" }
 selenium = "^4.21.0"
 fastapi = "^0.112.2"
 uvicorn = "^0.30.6"
+supabase = "^2.7.3"
 
 [tool.poetry.scripts]
-fasapi = "uvicorn recruitment.main:app --reload"
+fastapi = "recruitment.main:main"
 recruitment = "recruitment.main:run"
 train = "recruitment.main:train"
 
