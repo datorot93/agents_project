@@ -23,14 +23,40 @@ app.add_middleware(
 
 # Modelo Pydantic para recibir los inputs
 class JobRequirementsInput(BaseModel):
-    job_requirements: str
+    job_title: str
+    job_description: str
+    requirements: list
+    responsibilities: list
+    preferred_qualifications: list
 
 
-@app.post("/run/")
+
+@app.post("/run")
 async def run_endpoint(inputs: JobRequirementsInput):
+    
+    formatted_responsibilities = "\n- ".join(inputs.responsibilities)
+    formatted_requirements = "\n- ".join(inputs.requirements)
+    formatted_preferred_qualifications = "\n- ".join(inputs.preferred_qualifications)
+
+    formatted_inputs = {
+        "job_requirements": f"""
+        job_requirement:
+        title: > {inputs.job_title}
+        description: > 
+          - {inputs.job_description}
+        responsibilities: > \n-{formatted_responsibilities}
+        requirements: > \n-{formatted_requirements}
+        preferred_qualifications: > \n-{formatted_preferred_qualifications}
+        """
+    }
+
+    with open("formatted_inputs.txt", "w") as file:
+        file.write(formatted_inputs["job_requirements"])
+
+    print(formatted_inputs)
+
     try:
-        # Llama a la función `run` con los inputs recibidos
-        result = RecruitmentCrew().crew().kickoff(inputs=inputs.dict())
+        result = RecruitmentCrew().crew().kickoff(inputs=formatted_inputs)
         return {"status": "success", "message": "Recruitment crew started successfully.", "result": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
