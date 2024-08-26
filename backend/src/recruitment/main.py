@@ -1,6 +1,6 @@
 # UTILS
 import sys
-from recruitment.crew import RecruitmentCrew
+from crew import RecruitmentCrew
 
 # Pydantic
 from pydantic import BaseModel
@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 
-app = FastAPI()
+app = FastAPI(title="AI Agents", docs_url="/api/docs", openapi_url="/api")
 
 # CORS Middleware (opcional, agrega si es necesario)
 app.add_middleware(
@@ -60,6 +60,12 @@ async def run_endpoint(inputs: JobRequirementsInput):
         return {"status": "success", "message": "Recruitment crew started successfully.", "result": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
+    
+
+@app.get("/")
+async def run_endpoint():
+    
+    return {"status": "success", "message": "Recruitment crew started successfully."}
 
 def run():
     # Replace with your inputs, it will automatically interpolate any tasks and agents information
