@@ -31,7 +31,7 @@ class JobRequirementsInput(BaseModel):
 
 
 
-@app.post("/run")
+@app.post("/api/search_candidates")
 async def run_endpoint(inputs: JobRequirementsInput):
     
     formatted_responsibilities = "\n- ".join(inputs.responsibilities)
@@ -62,7 +62,7 @@ async def run_endpoint(inputs: JobRequirementsInput):
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
     
 
-@app.get("/")
+@app.get("/api/run")
 async def run_endpoint():
     
     return {"status": "success", "message": "Recruitment crew started successfully."}
