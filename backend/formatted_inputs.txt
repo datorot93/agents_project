@@ -2,16 +2,14 @@
         job_requirement:
         title: > Python and React JS Engineer
         description: > 
-          - We are seeking a skilled Python and React JS engineer to join our team. The ideal candidate will have experience in both backend and frontend development
+          - We are seeking a skilled Python and React JS engineer to join our team.
         responsibilities: > 
--Write clean, maintainable, and efficient code.
-- Ensure application performance and responsiveness.
-- Identify and resolve bottlenecks and bugs.
-        requirements: > 
 -Proven experience with Python and React.
 - Strong understanding of object-oriented programming.
-- Proficiency with JavaScript, HTML, CSS, and React.
+        requirements: > 
+-Write clean, maintainable, and efficient code.
+- Ensure application performance and responsiveness.
         preferred_qualifications: > 
 -Experience with cloud services (AWS, Google Cloud, or Azure).
-- Bachelor's degree in Computer Science or a related field.
+- Fluent english
         
