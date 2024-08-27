@@ -1,31 +1,31 @@
 export const dataAgents = [
     {
-        "agent": "RH",
+        "agent": "Candidates Search",
         "task": "A clear, concise statement of what the task entails.",
         "id": 1
     },
     {
-        "agent": "Development",
+        "agent": "Payroll Management",
         "task": "A clear, concise statement of what the task entails.",
         "id": 2
     },
     {
-        "agent": "Support",
+        "agent": "Performance Evaluation",
         "task": "A clear, concise statement of what the task entails.",
         "id": 3
     },
     {
-        "agent": "Sales",
+        "agent": "Labor Relations",
         "task": "A clear, concise statement of what the task entails.",
         "id": 4
     },
     {
-        "agent": "Purchase",
+        "agent": "Talent Management",
         "task": "A clear, concise statement of what the task entails.",
         "id": 5
     },
     {
-        "agent": "Logistic",
+        "agent": "Occupational Safety",
         "task": "A clear, concise statement of what the task entails.",
         "id": 6
     }

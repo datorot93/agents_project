@@ -4,11 +4,8 @@ import SprintPlanning from './SprintPlanning';
 import BurndownChart from './BurndownChart';
 
 const SprintPage = () => {
-    const [tasks, setTasks] = useState([
+    const [tasks] = useState([
         { id: '1', title: 'Task 1', status: 'ToDo', description: 'Task description 1', assignedTo: 'Juan' },
-        { id: '2', title: 'Task 2', status: 'ToDo', description: 'Task description 2', assignedTo: 'Maria' },
-        { id: '3', title: 'Task 3', status: 'InProgress', description: 'Task description 3', assignedTo: 'Carlos' },
-        { id: '4', title: 'Task 4', status: 'Done', description: 'Task description 4', assignedTo: 'Carlos' }
         // ...More tasks
     ]);
 

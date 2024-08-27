@@ -22,7 +22,7 @@ const Sidebar = () => {
                 {showAgents && (
                     <ul className="ml-4 mt-2">
                         <li className="text-sm text-gray-700 hover:text-blue-500">
-                            <Link to="/new-project">New Project</Link>
+                            <Link to="/agents">Human Resources</Link>
                         </li>
                         <li
                             className="cursor-pointer text-sm text-gray-700 hover:text-blue-500"
@@ -32,7 +32,7 @@ const Sidebar = () => {
                         {showConsult && (
                             <ul className="ml-4 mt-2">
                                 <li className="text-sm text-gray-700 hover:text-blue-500">
-                                    <Link to="/hr-agent">HR</Link>
+                                    <Link to="/hr-agent">Human Resources</Link>
                                 </li>
                                 <li className="text-sm text-gray-700 hover:text-blue-500">Development</li>
                                 <li className="text-sm text-gray-700 hover:text-blue-500">Support</li>
