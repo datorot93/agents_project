@@ -7,8 +7,6 @@ import Agents from "./components/routes/Agents"
 export const router = createBrowserRouter([
     {path: "/", element: <App />},
     {path: "/agents", element: <Agents />},
-    {path: "/dashboard", element: <Dashboard />},
-    {path: "/contact", element: <Contact />},
 ])
 
 export default router

@@ -30,6 +30,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    entrypoint: ["/bin/bash", "/app/run.sh", "start"]
+    command: ["start"]
     stdin_open: true
     volumes:
       - './frontend:/app:cached'
