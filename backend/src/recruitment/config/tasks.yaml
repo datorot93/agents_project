@@ -1,6 +1,6 @@
 research_candidates_task:
   description: >
-    Conduct thorough research to find potential candidates for the specified job.
+    Conduct thorough research to find potential candidate persons for the specified job.
     Utilize various online resources and databases to gather a comprehensive list of potential candidates.
     Ensure that the candidates meet the job requirements provided.
 
@@ -18,7 +18,7 @@ match_and_score_candidates_task:
     Job Requirements:
     {job_requirements}
   expected_output: >
-    A ranked list of candidates with detailed scores and justifications for each job position in JSON format with fields name of the candidate, knowledge, position, email and the linkeding profile link.
+    A ranked list of candidates with detailed scores and justifications for each job position in JSON format with always these keys named like this: name, knowledge (list of knowlefments), position, email and the linkeding.
 
 outreach_strategy_task:
   description: >
