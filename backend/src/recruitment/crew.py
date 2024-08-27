@@ -1,3 +1,5 @@
+import concurrent.futures
+
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
@@ -82,3 +84,18 @@ class RecruitmentCrew():
             process=Process.sequential,
             verbose=2,
         )
+    
+
+    def kickoff_with_timeout(self, timeout: int):
+        """Kickoff the crew with a timeout."""
+        def kickoff_crew():
+            return self.crew().kickoff(inputs={})  # Add any necessary inputs here
+
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(kickoff_crew)
+            try:
+                result = future.result(timeout=timeout)
+                return result
+            except concurrent.futures.TimeoutError:
+                print(f"The operation exceeded the timeout of {timeout} seconds.")
+                return None  # or handle the timeout case as needed

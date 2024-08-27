@@ -1,15 +1,18 @@
-# UTILS
+# utils
 import sys
-from crew import RecruitmentCrew
+import json
+import asyncio
 
-# Pydantic
-from pydantic import BaseModel
+# Crewai
+from crew import RecruitmentCrew
 
 # FastAPI
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
+# Schemas
+from schemas.job_requirements import JobRequirements
 
 app = FastAPI(title="AI Agents", docs_url="/api/docs", openapi_url="/api")
 
@@ -21,18 +24,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Modelo Pydantic para recibir los inputs
-class JobRequirementsInput(BaseModel):
-    job_title: str
-    job_description: str
-    requirements: list
-    responsibilities: list
-    preferred_qualifications: list
-
 
 
 @app.post("/api/search_candidates")
-async def run_endpoint(inputs: JobRequirementsInput):
+async def run_endpoint(inputs: JobRequirements):
     
     formatted_responsibilities = "\n- ".join(inputs.responsibilities)
     formatted_requirements = "\n- ".join(inputs.requirements)
@@ -50,14 +45,21 @@ async def run_endpoint(inputs: JobRequirementsInput):
         """
     }
 
-    with open("formatted_inputs.txt", "w") as file:
-        file.write(formatted_inputs["job_requirements"])
-
-    print(formatted_inputs)
 
     try:
+        # result = RecruitmentCrew().run_individual_tasks()
         result = RecruitmentCrew().crew().kickoff(inputs=formatted_inputs)
-        return {"status": "success", "message": "Recruitment crew started successfully.", "result": result}
+        # recruitment_crew = RecruitmentCrew()
+        # result = recruitment_crew.kickoff_with_timeout(timeout=120).crew().kickoff(inputs=formatted_inputs)
+        # result = await asyncio.wait_for(RecruitmentCrew().crew().kickoff(inputs=formatted_inputs), timeout=120.0)
+        # result = await asyncio.wait_for(RecruitmentCrew().crew().kickoff(inputs=formatted_inputs), timeout=120.0)
+        result = result.replace("`", "").replace("json", "")
+        json_result = json.loads(result)
+        with open("output.json", "w") as f:
+            f.write(json_result)
+        return {"status": "success", "message": "Recruitment crew started successfully.", "result": json_result}
+    # except asyncio.TimeoutError:
+    #     raise HTTPException(status_code=504, detail="The request timed out.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
     
