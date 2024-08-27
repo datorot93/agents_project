@@ -17,16 +17,16 @@ class LinkedInTool(BaseTool):
         return people
 
     def _format_publications_to_text(self, people):
-        # candidates = []
+        candidates = []
 
-        # result = ["\n".join([
-        #     "Person Profile",
-        #     "-------------",
-        #     p['name'],
-        #     p['position'],
-        #     p['location']
-        # ]) for p in people]
-        # result = "\n\n".join(result)
+        result = ["\n".join([
+            "Person Profile",
+            "-------------",
+            p['name'],
+            p['position'],
+            p['location']
+        ]) for p in people]
+        result = "\n\n".join(result)
 
-        # return result
-        return people
+        return result
+        # return people

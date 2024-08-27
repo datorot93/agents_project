@@ -18,7 +18,7 @@ match_and_score_candidates_task:
     Job Requirements:
     {job_requirements}
   expected_output: >
-    A ranked list of candidates with detailed scores and justifications for each job position.
+    A ranked list of candidates with detailed scores and justifications for each job position in JSON format with fields name of the candidate, knowledge, position, email and the linkeding profile link.
 
 outreach_strategy_task:
   description: >
@@ -28,11 +28,11 @@ outreach_strategy_task:
     Job Requirements:
     {job_requirements}
   expected_output: >
-    A detailed list of outreach methods and templates ready for implementation, including communication strategies and engagement tactics.
+    A detailed list of outreach methods and templates ready for implementation, including communication strategies and engagement tactics in JSON format.
 
 report_candidates_task:
   description: >
     Compile a comprehensive report for recruiters on the best candidates to put forward.
     Summarize the findings from the previous tasks and provide clear recommendations based on the job requirements.
   expected_output: >
-    A detailed report with the best candidates to pursue, no need to include the job requirements formatted as markdown without '```', including profiles, scores, and outreach strategies.
+    A detailed report formatted in JSON with the best candidates to pursue, no need to include the job requirements, including profiles, scores, and outreach strategies.
