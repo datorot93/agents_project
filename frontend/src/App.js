@@ -12,6 +12,7 @@ import Contact from "./components/routes/Contact"
 import Agents from "./components/routes/Agents"
 import SprintPage from "./SprintPage"
 import Project from "./components/routes/Project"
+import Candidates from "./components/routes/Candidates"
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/sprint" element={<SprintPage />} />
             <Route path="/project" element={<Project />} />
+            <Route path="/candidates" element={<Candidates />} />
           </Routes>
 
         </div>

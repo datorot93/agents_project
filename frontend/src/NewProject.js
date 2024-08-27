@@ -36,7 +36,7 @@ const ProjectDescription = () => {
         }
         console.log(data); // Form data object can be used here (e.g., send it to an API)
         startAgent(data)
-        //navigate('/Agents')
+        navigate('/candidates')
 
 
     }
