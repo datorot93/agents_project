@@ -18,7 +18,7 @@ match_and_score_candidates_task:
     Job Requirements:
     {job_requirements}
   expected_output: >
-    A ranked list of candidates with detailed scores and justifications for each job position in JSON format with the following format: name: example_name, knoledge: [list of knowledge], position: position of the candidate, email: email of the candidate, linkedin: link of the candidate profile.
+    A ranked list of candidates with detailed scores and justifications for each job position in JSON format always with the following format: name: example_name, knoledge: [list of knowledge], position: position of the candidate, email: email of the candidate, linkedin: link of the candidate profile.
 
 outreach_strategy_task:
   description: >
