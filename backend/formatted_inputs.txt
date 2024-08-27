@@ -11,5 +11,5 @@
 - Ensure application performance and responsiveness.
         preferred_qualifications: > 
 -Experience with cloud services (AWS, Google Cloud, or Azure).
-- Fluent english
+- Fluent english
         

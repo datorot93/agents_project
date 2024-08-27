@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import apiService from './services/apiService'
 
 const ProjectDescription = () => {
     const [projectTitle, setProjectTitle] = useState('')
@@ -9,17 +10,35 @@ const ProjectDescription = () => {
     const [projectResponsabilities, setProjectResponsabilities] = useState('')
     const [projectPreferredQualifications, setProjectPreferredQualifications] = useState('')
     const navigate = useNavigate();
+
+    const startAgent = async (data) => {
+        try {
+            const url = `api/search_candidates`;
+            const response_agents = await apiService.postWithoutToken(url, data);
+            console.log(response_agents);
+            return response_agents; // Optionally return the response
+        } catch (error) {
+            console.error("Error in startAgent function:", error);
+            // You can handle the error here, e.g., show a user-friendly message
+            // throw error; // Uncomment this if you want to propagate the error to the caller
+        }
+    };
+
+    startAgent()
     const handleForm = (e) => {
         e.preventDefault();
         const data = {
-            'title': projectTitle,
-            'description': projectDescription,
-            'requirements': projectRequirements,
-            'responsabilities': projectResponsabilities,
-            'preferredQualifications': projectPreferredQualifications
+            'job_title': projectTitle,
+            'job_description': projectDescription,
+            'requirements': [projectRequirements],
+            'responsibilities': [projectResponsabilities],
+            'preferred_qualifications': [projectPreferredQualifications]
         }
         console.log(data); // Form data object can be used here (e.g., send it to an API)
-        navigate('/Agents')
+        startAgent(data)
+        //navigate('/Agents')
+
+
     }
     
   return (

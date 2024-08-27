@@ -56,7 +56,7 @@ async def run_endpoint(inputs: JobRequirements):
         result = result.replace("`", "").replace("json", "")
         json_result = json.loads(result)
         with open("output.json", "w") as f:
-            f.write(json_result)
+            f.write(str(json_result))
         return {"status": "success", "message": "Recruitment crew started successfully.", "result": json_result}
     # except asyncio.TimeoutError:
     #     raise HTTPException(status_code=504, detail="The request timed out.")
