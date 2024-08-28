@@ -4,6 +4,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 from tools.linkedin import LinkedInTool
+from schemas.candidate import Candidate
 
 @CrewBase
 class RecruitmentCrew():
@@ -87,7 +88,10 @@ class RecruitmentCrew():
         """
         return Task(
             config=self.tasks_config['research_candidates_task'],
-            agent=self.researcher()
+            agent=self.researcher(),
+            output_pydantic = Candidate,
+            
+            output_format = 'json'
         )
 
     @task
