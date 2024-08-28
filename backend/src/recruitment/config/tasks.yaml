@@ -11,14 +11,23 @@ research_candidates_task:
 
 match_and_score_candidates_task:
   description: >
-    Evaluate and match the candidates to the best job positions based on their qualifications and suitability.
-    Score each candidate to reflect their alignment with the job requirements, ensuring a fair and transparent assessment process.
-    Don't try to scrape people's linkedin, since you don't have access to it.
-
-    Job Requirements:
-    {job_requirements}
+    Conduct thorough research to find candidates that match the following job requirements:
+      - Requirements: {job_requirements}
+      Use various databases and online resources to compile a list of potential candidates.
+      The collected information must be in JSON format and should include only the following fields with one level of depth:
+      - name
+      - skills
+      - position
+      - email
+      - linkedin
+      Ensure that the candidates meet the specified requirements.
   expected_output: >
-    A ranked list of candidates with detailed scores and justifications for each job position in JSON format always with the following format: name: example_name, knoledge: [list of knowledge], position: position of the candidate, email: email of the candidate, linkedin: link of the candidate profile.
+    A list of 2 potential candidates with the following fields:
+      - name: "Candidate name",
+      - skills: ["Skill 1", "Skill 2", "Skill 3"],
+      - position: "Candidate Position",
+      - email: "candidate email",
+      - linkedin: "candidate linkedin"
 
 outreach_strategy_task:
   description: >
