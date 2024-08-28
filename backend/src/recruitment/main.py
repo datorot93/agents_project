@@ -17,6 +17,7 @@ import uvicorn
 # Schemas
 from schemas.job_requirements import JobRequirements
 from schemas.candidate import Candidate
+from schemas.list_candidtes import ListCandidate
 
 app = FastAPI(title="AI Agents", docs_url="/api/docs", openapi_url="/api")
 
@@ -76,10 +77,10 @@ async def run_endpoint(inputs: JobRequirements):
         messages=[
             {
                 "role": "user",
-                "content": result
+                "content": f"In the result, there is a JSON with a key named candidates, I want to get this candidates in the format given{result}"
             }
         ],
-        response_format=Candidate,
+        response_format=ListCandidate,
     )
 
     message = completion.choices[0].message
@@ -97,7 +98,8 @@ async def run_endpoint(inputs: JobRequirements):
             "status": "error",
             "message": "An error occurred during the recruitment process."
         }
-
+    print('ESTE ES EL RESPONSE DICT')
+    print(response_dict)
     return response_dict
 
     # except Exception as e:
