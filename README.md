@@ -20,12 +20,12 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <!-- <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
@@ -67,6 +67,7 @@ This project is built using the following major frameworks and libraries:
 - **FastAPI**: For building the backend API.
 - **Selenium**: For web scraping and automation.
 - **Pydantic**: For data validation and settings management.
+- **CrewAI**: For natural language processing and candidate matching.
 - **React**: For building the frontend user interface, providing a dynamic and responsive experience for users.
 - **Tailwind**: For styling the frontend with utility-first CSS, enabling rapid UI development and ensuring a consistent design.
 - **Docker**: For containerization and easy deployment.
@@ -77,133 +78,75 @@ This project is built using the following major frameworks and libraries:
 
 
 <!-- GETTING STARTED -->
+<!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Make sure you have Docker and Docker Compose installed on your machine.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/datorot93/agents_project.git
+    ```
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin github_username/repo_name
-   git remote -v # confirm the changes
-   ```
+2. **Navigate to the backend folder and create a `.env` file with the following variables:**
+    ```sh
+    cd agents_project/backend
+    touch .env
+    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+    Add the following content to the `.env` file:
+    ```env
+    OPENAI_API_KEY=your_openai_api_key
+    OPENAI_MODEL_NAME=your_openai_model_name
+    SERPER_API_KEY=your_serper_api_key
+    LINKEDIN_COOKIE=your_linkedin_cookie
+    ```
 
+    ##### Anotation
+    ###### LINKEDIN_COOKIE 
+    * Navigate to www.linkedin.com and log in
+    * Open browser developer tools (Ctrl-Shift-I or right click -> inspect element)
+    * Select the appropriate tab for your browser (Application on Chrome, Storage on Firefox)
+    * Click the Cookies dropdown on the left-hand menu, and select the www.linkedin.com option
+    * Find and copy the li_at value and add it to your .env file
+    * Be sure to fetch the cookies again if selenium doesnt login to linkedin after a while
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+    ###### SERPER_API_KEY
+    Serper is a search engine API that allows developers to integrate search functionality into their applications. It provides a simple and efficient way to query search results programmatically.
+    * Create an account in https://serper.dev
+    * Sign in or Sign Out an account
+    * Copy the API_KEY they provide
 
 
 
-<!-- CONTRIBUTING -->
-## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+3. **Navigate to the root path of the project:**
+    ```sh
+    cd ..
+    ```
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+4. **Run the Docker Compose command to start the project:**
+    ```sh
+    docker-compose up -d
+    ```
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+    This command will start downloading the necessary images and setting up the project.
 
-### Top contributors:
+5. **Access the project:**
 
-<a href="https://github.com/othneildrew/Best-README-Template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
-</a>
+    Once the setup is complete, the project will be running at:
+    ```
+    http://localhost:8000
+    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -226,49 +169,3 @@ Use this space to list resources you find helpful and would like to give credit 
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
-
-
-
-
-# SETUP BACKEND
-# Create the virtual enviroment in Power Shell
-python -m venv venv
-
-# Active the virtual enviroment in Power Shell
-source venv/bin/activate
-
-# Python version of the project in Power Shell
-Python 3.12.1
-
-# Install poetry
-pip install poetry
-
-Run:
-poetry lock
-poetry install
-
-# Install the dependicies
-pip install -r requirements.txt
-
-# Running the Script
-Configure Environment: Copy .env.example and set up the environment variables for OpenAI and other tools as needed.
-Install Dependencies: Run poetry lock && poetry install.
-Customize: Modify src/recruitment/main.py to add custom inputs for your agents and tasks.
-Customize Further: Check src/recruitment/config/agents.yaml to update your agents and src/recruitment/config/tasks.yaml to update your tasks.
-Custom Tools: You can find custom tools at recruitment/src/recruitment/tools/.
-Execute the Script: Run poetry run recruitment and input your project details.
-
-# Stepts to get Linkedin Cookie (LI_AT)
-Navigate to www.linkedin.com and log in
-Open browser developer tools (Ctrl-Shift-I or right click -> inspect element)
-Select the appropriate tab for your browser (Application on Chrome, Storage on Firefox)
-Click the Cookies dropdown on the left-hand menu, and select the www.linkedin.com option
-Find and copy the li_at value and add it to your .env file
-Be sure to fetch the cookies again if selenium doesnt login to linkedin after a while
-
-# Running the Script: 
-poetry run recruitment
-
-poetry run train n 
-
-Note: where n is the number of training iterations
