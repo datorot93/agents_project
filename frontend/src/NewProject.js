@@ -114,12 +114,16 @@ const ProjectDescription = () => {
                 <div className='flex flex-col items-center'>
                     <form>
                         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {candidates.map((candidate) => (
-                            <CandidatesItem key={candidate.name} candidate={candidate} />
-                        ))}
+                            {Array.isArray(candidates) && candidates.length > 0 ? (
+                                candidates.map((candidate) => (
+                                    <CandidatesItem key={candidate.name} candidate={candidate} />
+                                ))
+                            ) : (
+                                <CandidatesItem candidate={candidates} />
+                            )}
                         </div>
                     </form>
-                </div>
+            </div>
             )
         }
     </>

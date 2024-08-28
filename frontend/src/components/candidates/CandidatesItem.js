@@ -6,12 +6,12 @@ const CandidatesItem = ({ candidate }) => {
     console.log(`Selected Candidate Name: ${name}, Email: ${email}`);
   };
   const candidate_name = candidate.name
-  const candidate_position = candidate.position
-  const candidate_knowledge = candidate.knowledge.join(",")
+  const candidate_skills = candidate.skills.join(", ")
+  const candidate_profile = candidate.position
   const candidate_email = candidate.email
   const candidate_linkedin = candidate.linkedin
 
-
+  console.log(`This is the candidates linkedin ${candidate_linkedin} ${typeof candidate_linkedin}`);
 
 
   //const specialization_candidate = candidate.profile.specialization.join(',')
@@ -22,15 +22,15 @@ const CandidatesItem = ({ candidate }) => {
         <img src={candidateimage} alt="candidate" className="w-3/5 h-auto" />
       </div>
       <h5 className="mb-2 text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
-        {candidate_name}
+        {candidate_name && candidate_name.length > 0 ? candidate_name : "No name"}
       </h5>
-      {/** 
+       
       <h5 className="mb-2 text-lg text-center tracking-tight text-gray-900 dark:text-white">
-        {candidate_position}
+        {candidate_profile && candidate_profile.length > 0 ? candidate_profile : "No profile"}
       </h5>
-      <p className="mb-3 h-20 text-sm text-justify text-gray-500 dark:text-gray-400">{candidate_knowledge}</p>
-      <p className="mb-3 text-sm text-center text-gray-500 dark:text-gray-400">{candidate_email}</p>
-      <p className="mb-3 text-sm text-center text-gray-500 dark:text-gray-400">{candidate_linkedin !== "Not Provided" ? <a href={candidates_linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a> : "Not LinkedIn Profile"}</p>
+      <p className="mb-3 text-sm text-center text-justify text-gray-500 dark:text-gray-400 overflow-y-auto">{candidate_skills && candidate_skills.length > 0 ? candidate_skills : "No knowledge"}</p>
+      <p className="mb-3 text-sm text-center text-gray-500 dark:text-gray-400">{candidate_email && candidate_email.length > 0 ? candidate_email : "No email"}</p>
+      <p className="mb-3 text-sm text-center text-gray-500 dark:text-gray-400">{candidate_linkedin && candidate_linkedin.length > 0 ? (<a href={candidate_linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>) : "Not LinkedIn Profile"}</p>
       <button
         type="button"
         className={`text-black font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none w-full bg-gray-200
@@ -39,7 +39,7 @@ const CandidatesItem = ({ candidate }) => {
           onClick={() => handleSelect(candidate.name, candidate.email)}
       >
         Select
-      </button>*/}
+      </button>
     </div>
   );
 };
