@@ -33,6 +33,21 @@ class RecruitmentCrew():
             allow_delegation=False,
             verbose=True
         )
+    
+    @agent
+    def validator(self) -> Agent:
+        """
+        Creates a validation agent.
+
+        Returns:
+            Agent: The validation agent.
+        """
+        return Agent(
+            config=self.agents_config['validator'],
+            tools=[SerperDevTool(), ScrapeWebsiteTool(), LinkedInTool()],
+            allow_delegation=False,
+            verbose=True
+        )
 
     @agent
     def matcher(self) -> Agent:
@@ -93,6 +108,7 @@ class RecruitmentCrew():
             
             output_format = 'json'
         )
+    
 
     @task
     def match_and_score_candidates_task(self) -> Task:
@@ -105,6 +121,20 @@ class RecruitmentCrew():
         return Task(
             config=self.tasks_config['match_and_score_candidates_task'],
             agent=self.matcher()
+        )
+    
+    @task
+    def validate_results_task(self) -> Task:
+        """
+        Creates a task for validating the results.
+
+        Returns:
+            Task: The validate results task.
+        """
+        return Task(
+            config=self.tasks_config['validate_results_task'],
+            agent=self.validator(),
+            context=[self.research_candidates_task(), self.match_and_score_candidates_task()]
         )
 
     @task
@@ -133,6 +163,9 @@ class RecruitmentCrew():
             agent=self.reporter(),
             context=[self.research_candidates_task(), self.match_and_score_candidates_task(), self.outreach_strategy_task()],
         )
+    
+
+    
 
     @crew
     def crew(self) -> Crew:
