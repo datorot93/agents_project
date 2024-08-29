@@ -1,6 +1,6 @@
 research_candidates_task:
   description: >
-    Conduct thorough research to find potential candidate persons for the specified job.
+    Conduct thorough research to find potential real candidates for the specified job.
     Utilize various online resources and databases to gather a comprehensive list of potential candidates.
     Ensure that the candidates meet the job requirements provided.
 
@@ -8,6 +8,13 @@ research_candidates_task:
     {job_requirements}
   expected_output: >
     A list of 2 potential candidates with their contact information and brief profiles highlighting their suitability.
+
+validate_results_task:
+  description: >
+    Review the results provided by the other agents to ensure they contain only candidate profiles and not job offers.
+    If any job offers are detected instead of candidate profiles, flag the results for correction and instruct the other agents to redo their tasks.
+  expected_output: >
+    A validation report indicating whether the results are correct. If incorrect, indicate the issues and request the tasks to be redone.
 
 match_and_score_candidates_task:
   description: >

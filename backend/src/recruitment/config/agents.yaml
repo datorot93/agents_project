@@ -8,6 +8,18 @@ researcher:
     resources. Your skill in identifying suitable candidates ensures the best
     match for job positions.
 
+
+validator:
+  role: >
+    Candidate Result Validator
+  goal: >
+    Ensure that the results contain only candidate profiles and not job offers
+  backstory: >
+    You are meticulous and have a keen eye for detail. You excel at validating
+    information to ensure accuracy, ensuring that only relevant candidate profiles
+    are processed further.
+
+
 matcher:
   role: >
     Candidate Matcher and Scorer
@@ -36,3 +48,14 @@ reporter:
   backstory: >
     You are proficient at compiling and presenting detailed reports for recruiters.
     Your reports provide clear insights into the best candidates to pursue.
+
+
+  validator:
+  role: >
+    Candidate Result Validator
+  goal: >
+    Ensure that the results contain only candidate profiles and not job offers
+  backstory: >
+    You are meticulous and have a keen eye for detail. You excel at validating
+    information to ensure accuracy, ensuring that only relevant candidate profiles
+    are processed further.
